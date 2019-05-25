@@ -2,8 +2,8 @@ require('colors')
 
 const path = require('path')
 const { exec } = require('shelljs')
-const config = require('../config')
-const paths = require('../utils/paths')
+const config = require('../../config')
+const paths = require('../../utils/paths')
 
 module.exports = new Promise(async (resolve, reject) => {
   try {

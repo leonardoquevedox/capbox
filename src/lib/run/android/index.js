@@ -4,13 +4,13 @@ const shell = require('shelljs')
 const path = require('path')
 
 const { exec } = shell
-const rootPath = path.resolve(__dirname, '../../../')
-const androidPath = path.join(rootPath, 'android')
-const apkPath = path.join(androidPath, 'app', 'build', 'outputs', 'apk', 'debug', 'app-debug.apk')
-/* eslint-disable-next-line */
-const capacitorConfig = require(path.join(rootPath, 'capacitor.config.json'))
 
 const build = async () => {
+  const rootPath = process.env.CAPACITOR_PROJECT_ROOT
+  const androidPath = path.join(rootPath, 'android')
+  const apkPath = path.join(androidPath, 'app', 'build', 'outputs', 'apk', 'debug', 'app-debug.apk')
+  /* eslint-disable-next-line */
+  const capacitorConfig = require(path.join(rootPath, 'capacitor.config.json'))
   console.log(`Trying to remove old application versions...`.yellow)
   await exec(`adb uninstall -k ${capacitorConfig.appId}`, { silent: true })
   console.log(`Transfering apk to device...`.yellow)

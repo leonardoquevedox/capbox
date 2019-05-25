@@ -1,6 +1,6 @@
 const inquirer = require('inquirer')
-const platforms = require('../../config/platforms')
-const buildTypes = require('../../config/buildTypes')
+const platforms = require('../config/platforms')
+const buildTypes = require('../config/buildTypes')
 
 module.exports = {
   askForPlatform: () =>

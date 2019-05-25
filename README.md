@@ -5,4 +5,4 @@
 [![basic-merchandising](https://imgur.com/LNOYczf.png)](https://github.com/leopq)
 
 ## Introduction
-WIP
+* WIP

@@ -1,21 +1,22 @@
 require('colors')
 
 const shell = require('shelljs')
-const exec = shell.exec
 const path = require('path')
 
-const rootPath = path.resolve(__dirname, '../../../../')
-const iosPath = path.join(rootPath, 'ios')
+const { log } = console
+const { exec } = shell
 
-module.exports = async () => {
-  return new Promise((resolve, reject)=>{
-    try{
-      console.log(`Generating iOS .ipa file...`.yellow)
-      console.log(`.ipa file generated successfully!`.green.bold)
-      resolve()
-    } catch(e){
-      reject(e)
-    }
-  })
-}
+module.exports = new Promise(async (resolve, reject)=>{
+  try{
+    const rootPath = process.env.CAPACITOR_PROJECT_ROOT
+    const iosPath = path.join(rootPath, 'ios')
+    console.log(iosPath)
+    log(`Generating Android apk file...`.yellow)
+    await exec(`./gradlew assembleDebug`, { cwd: iosPath })
+    log(`Android apk successfully!`.green.bold)
+    resolve()
+  } catch(e){
+    reject(e)
+  }
+})
 

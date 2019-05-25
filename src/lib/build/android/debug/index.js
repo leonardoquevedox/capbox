@@ -10,6 +10,7 @@ module.exports = new Promise(async (resolve, reject)=>{
   try{
     const rootPath = process.env.CAPACITOR_PROJECT_ROOT
     const androidPath = path.join(rootPath, 'android')
+    console.log(androidPath)
     log(`Generating Android apk file...`.yellow)
     await exec(`./gradlew assembleDebug`, { cwd: androidPath })
     log(`Android apk successfully!`.green.bold)
