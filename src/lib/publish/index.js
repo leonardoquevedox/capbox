@@ -1,24 +1,19 @@
 require('colors')
 
-const inquirer = require('inquirer')
+const path = require('path')
+const { exec } = require('shelljs')
+const config = require('../../config')
+const paths = require('../../utils/paths')
 
-const promptForPlatform = () =>
-  inquirer.prompt([
-    {
-      type: 'list',
-      name: 'platform',
-      message: 'On which platform would you like to run the app?',
-      choices: [
-        'PWA',
-        'Android', 
-        'iOS', 
-      ],
-      default: false
-    }
-  ])
-
-module.exports = new Promise(async (resolve, reject) => {
-  const platform = process.env.CAPBOX_PLATFORM || (await promptForPlatform()).platform
-  console.log(platform)
-  resolve()
+module.exports = () => new Promise(async (resolve, reject) => {
+  try {
+    const { log } = console
+    const platform = await config.getPlatform()
+    const script = path.join(__dirname, platform)
+    log(`Publishing a new version ${platform} version...`.yellow)
+    await exec(`npx cross-env CAPACITOR_PROJECT_ROOT=${paths.getRootPath()} node ${script}`)
+    resolve()
+  } catch (e) {
+    reject(e)
+  }
 })

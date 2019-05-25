@@ -2,8 +2,16 @@
 const program = require('commander')
 const packageJSON = require('../package.json')
 
-process.env.CAPBOX_STAGE = process.env.CAPBOX_STAGE || 'production'
+/* Scripts */
+const build = require('./lib/build')
+const distribute = require('./lib/distribute')
+const publish = require('./lib/publish')
+const resources = require('./lib/resources')
+const run = require('./lib/run')
+const sync = require('./lib/sync')
 
+/* CLI startup */
+process.env.CAPBOX_STAGE = process.env.CAPBOX_STAGE || 'production'
 program.version(packageJSON.version).option('-h, --help', 'Shows this help description.', () => {
   program.help()
 })
@@ -16,7 +24,9 @@ program
   .action((platform, options) => {
     process.env.CAPBOX_PLATFORM = platform
     process.env.CAPBOX_BUILD_TYPE = options.release ? 'release' : 'debug'
-    require('./lib/build')
+    sync().then(() => {
+      build()
+    })
   })
 
 /* ----- Run ------ */
@@ -27,18 +37,48 @@ program
   .action((platform, options) => {
     process.env.CAPBOX_PLATFORM = platform
     process.env.CAPBOX_BUILD_TYPE = options.release ? 'release' : 'debug'
-    require('./lib/run')
+    sync().then(() => {
+      run()
+    })
   })
 
 /* ----- Publish ------ */
 program
-  .command('publish')
+  .command('distribute <platform>')
+  .option('--stage', 'Performs an optimized and signed release build.')
   .description('Run application on specified platform: "android", "ios" or "pwa".')
-  .action(() => {
-    require('./lib/publish')
+  .action((platform, options) => {
+    process.env.CAPBOX_PLATFORM = platform
+    process.env.CAPBOX_DISTRIBUTE_STAGE = options.stage
+    process.env.CAPBOX_BUILD_TYPE = 'release'
+    sync().then(() => {
+      build().then(() => {
+        distribute()
+      })
+    })
+  })
+
+/* ----- Publish ------ */
+program
+  .command('publish <platform>')
+  .description('Run application on specified platform: "android", "ios" or "pwa".')
+  .action((platform, options) => {
+    process.env.CAPBOX_PLATFORM = platform
+    process.env.CAPBOX_PUBLISH_STAGE = options.stage
+    process.env.CAPBOX_BUILD_TYPE = 'release'
+    sync().then(() => {
+      build().then(() => {
+        publish()
+      })
+    })
   })
 
 /* ----- Resources ------ */
-program.command('resources', 'Generated icons & splashscreens for the configured platforms.')
+program
+  .command('resources')
+  .description('Generates icons & splashscreens for the configured platforms.')
+  .action(() => {
+    resources()
+  })
 
 program.parse(process.argv)
