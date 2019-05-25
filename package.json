@@ -1,8 +1,8 @@
 {
   "name": "capbox",
   "description": "The brand new toolbox for Capacitor.io tasks automation.",
-  "version": "1.0.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
   "scripts": {
     "test:build": "cross-env CAPBOX_STAGE=development node src/lib/build",
     "test:run": "cross-env CAPBOX_STAGE=development node src/lib/run",
