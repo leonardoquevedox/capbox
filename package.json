@@ -4,10 +4,7 @@
   "version": "0.1.1",
   "private": false,
   "scripts": {
-    "test:build": "cross-env CAPBOX_STAGE=development node src/lib/build",
-    "test:run": "cross-env CAPBOX_STAGE=development node src/lib/run",
-    "test:publish": "cross-env CAPBOX_STAGE=development node src/lib/publish",
-    "test:resources": "cross-env CAPBOX_STAGE=development node src/lib/resources"
+    "dev": "cross-env CAPBOX_STAGE=development node bin/capbox"
   },
   "dependencies": {
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
@@ -103,13 +100,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  }
+  ]
 }
