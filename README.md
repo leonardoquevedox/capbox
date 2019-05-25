@@ -1,6 +1,6 @@
 # Capbox
 
-> Generate icon & splash screen for Capacitor projects using javascript only.
+> The brand new toolbox for Capacitor.io tasks automation.
 
 [![basic-merchandising](https://imgur.com/LNOYczf.png)](https://github.com/leopq)
 
