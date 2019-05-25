@@ -1,0 +1,16 @@
+# Project dependencies
+.cache
+node_modules
+yarn-error.log
+
+.DS_Store
+.cache
+
+# Build directory
+.gradle
+
+# Environment vars
+.env
+
+capacitor.config.json
+test
