@@ -8,6 +8,7 @@ const distribute = require('./lib/distribute')
 const publish = require('./lib/publish')
 const resources = require('./lib/resources')
 const run = require('./lib/run')
+const optimize = require('./lib/optimize')
 const sync = require('./lib/sync')
 
 /* CLI startup */
@@ -15,19 +16,6 @@ process.env.CAPBOX_STAGE = process.env.CAPBOX_STAGE || 'production'
 program.version(packageJSON.version).option('-h, --help', 'Shows this help description.', () => {
   program.help()
 })
-
-/* ----- Build ------ */
-program
-  .command('build <platform>')
-  .description('Run application on specified platform: "android", "ios" or "pwa".')
-  .option('--release', 'Performs an optimized and signed release build.')
-  .action((platform, options) => {
-    process.env.CAPBOX_PLATFORM = platform
-    process.env.CAPBOX_BUILD_TYPE = options.release ? 'release' : 'debug'
-    sync().then(() => {
-      build()
-    })
-  })
 
 /* ----- Run ------ */
 program
@@ -39,6 +27,19 @@ program
     process.env.CAPBOX_BUILD_TYPE = options.release ? 'release' : 'debug'
     sync().then(() => {
       run()
+    })
+  })
+
+/* ----- Build ------ */
+program
+  .command('build <platform>')
+  .description('Run application on specified platform: "android", "ios" or "pwa".')
+  .option('--release', 'Performs an optimized and signed release build.')
+  .action((platform, options) => {
+    process.env.CAPBOX_PLATFORM = platform
+    process.env.CAPBOX_BUILD_TYPE = options.release ? 'release' : 'debug'
+    sync().then(() => {
+      build()
     })
   })
 
@@ -79,6 +80,17 @@ program
   .description('Generates icons & splashscreens for the configured platforms.')
   .action(() => {
     resources()
+  })
+
+/* ----- Optimize ------ */
+program
+  .command('optimize <platform>')
+  .description('Optimizes application statics for specified platform: "android", "ios" or "pwa".')
+  .action(platform => {
+    process.env.CAPBOX_PLATFORM = platform
+    sync().then(() => {
+      optimize()
+    })
   })
 
 program.parse(process.argv)
