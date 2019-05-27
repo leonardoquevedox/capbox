@@ -1,7 +1,7 @@
 {
   "name": "capbox",
   "description": "The brand new toolbox for Capacitor.io tasks automation.",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "private": false,
   "scripts": {
     "babel": "babel",
