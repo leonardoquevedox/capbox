@@ -11,12 +11,13 @@ module.exports = new Promise(async (resolve, reject) => {
     const stage = process.env.CAPBOX_DISTRIBUTE_STAGE
     /* eslint-disable-next-line */
     const capacitorConfig = require(path.join(rootPath, 'capacitor.config.json'))
-    const appName = capacitorConfig.publish.appcenter.ios[stage]
+    const { appName } = capacitorConfig
+    const distributionName = capacitorConfig.publish.appcenter.ios[stage]
     const iosPath = path.join(rootPath, 'ios')
-    const appExecutable = path.join(iosPath, 'app.ipa')
+    const appExecutable = path.join(iosPath, 'build', `${appName}.ipa`)
     console.log(`Uploading app build...`.yellow)
     await exec(
-      `npx appcenter-cli distribute release --app ${appName} -f ${appExecutable} -g Collaborators`,
+      `npx appcenter-cli distribute release --app ${distributionName} -f ${appExecutable} -g Collaborators`,
       { cwd: iosPath }
     )
     resolve()
