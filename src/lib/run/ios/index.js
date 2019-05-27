@@ -19,7 +19,7 @@ module.exports = new Promise(async (resolve, reject) => {
       { cwd: iosPath }
     )
     await exec(
-    `xcrun xcodebuild -arch i386 \
+      `xcrun xcodebuild -arch i386 \
     -scheme ${appName} \
     -workspace ${appName}.xcworkspace \
     -configuration Debug \ 
