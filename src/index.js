@@ -19,8 +19,7 @@ program.version(packageJSON.version).option('-h, --help', 'Shows this help descr
 
 /* ----- Run ------ */
 program
-  .command('run')
-  .arguments('<platform>')
+  .command('run <platform>')
   .option('--release', 'Performs an optimized and signed release build.')
   .description('Build application for specified platform: "android", "ios" or "pwa".')
   .action((platform, options) => {
@@ -64,11 +63,11 @@ program
     process.env.CAPBOX_PLATFORM = platform
     process.env.CAPBOX_DISTRIBUTION_STAGE = options.stage
     process.env.CAPBOX_BUILD_TYPE = 'release'
-   // sync().then(() => {
-    //  build().then(() => {
+    sync().then(() => {
+      build().then(() => {
         distribute()
-    //  })
-  //  })
+      })
+    })
   })
 
 /* ----- Publish ------ */
