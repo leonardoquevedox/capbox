@@ -24,7 +24,7 @@ module.exports = new Promise(async (resolve, reject) => {
     }
     fs.writeFileSync(capacitorConfigFile, JSON.stringify(capacitorConfigContent, null, 2))
     log(`Generating capacitor config....`.yellow)
-    await exec('npx cap sync')
+    await exec('npx cap sync', { cwd: rootPath })
     log('Capacitor build updated successfully!'.green)
     resolve()
   } catch (e) {
