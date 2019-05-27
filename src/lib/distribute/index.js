@@ -5,15 +5,20 @@ const { exec } = require('shelljs')
 const config = require('../../config')
 const paths = require('../../utils/paths')
 
-module.exports = () => new Promise(async (resolve, reject) => {
-  try {
-    const { log } = console
-    const platform = await config.getPlatform()
-    const script = path.join(__dirname, platform)
-    log(`Distributing a new version ${platform} version...`.yellow)
-    await exec(`npx cross-env CAPACITOR_PROJECT_ROOT=${paths.getRootPath()} node ${script}`)
-    resolve()
-  } catch (e) {
-    reject(e)
-  }
-})
+module.exports = () =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const { log } = console
+      const platform = await config.getPlatform()
+      /* eslint-disable-next-line */
+      const capacitorConfig = require(path.join(paths.getRootPath(), 'capacitor.config.json'))
+      const stage = await config.getDistributionStage(platform, capacitorConfig)
+      const script = path.join(__dirname, platform)
+      const environmentVars = `npx cross-env CAPACITOR_PROJECT_ROOT=${paths.getRootPath()}`
+      log(`Distributing a new version ${platform} ${stage} version...`.yellow)
+      await exec(`${environmentVars} node ${script}`)
+      resolve()
+    } catch (e) {
+      reject(e)
+    }
+  })

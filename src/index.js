@@ -62,13 +62,13 @@ program
   .description('Run application on specified platform: "android", "ios" or "pwa".')
   .action((platform, options) => {
     process.env.CAPBOX_PLATFORM = platform
-    process.env.CAPBOX_DISTRIBUTE_STAGE = options.stage
+    process.env.CAPBOX_DISTRIBUTION_STAGE = options.stage
     process.env.CAPBOX_BUILD_TYPE = 'release'
-    sync().then(() => {
-      build().then(() => {
+   // sync().then(() => {
+    //  build().then(() => {
         distribute()
-      })
-    })
+    //  })
+  //  })
   })
 
 /* ----- Publish ------ */

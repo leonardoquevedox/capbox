@@ -47,5 +47,24 @@ module.exports = {
         .catch(e => {
           reject(e)
         })
+    }),
+  askForDistributionStage: (platform, capacitorConfig) =>
+    new Promise((resolve, reject) => {
+      inquirer
+        .prompt([
+          {
+            type: 'list',
+            name: 'buildType',
+            message: `For which stage of ${capacitorConfig.appName} would you like to distribute?`,
+            choices: Object.keys(capacitorConfig.distribute.appcenter[platform]),
+            default: buildTypes.DEBUG
+          }
+        ])
+        .then(value => {
+          resolve(value.buildType ? value.buildType : buildTypes.DEBUG)
+        })
+        .catch(e => {
+          reject(e)
+        })
     })
 }

@@ -22,5 +22,18 @@ module.exports = {
       } catch (e) {
         reject(e)
       }
+    }),
+  getDistributionStage: (platform, capacitorConfig) =>
+    new Promise(async (resolve, reject) => {
+      try {
+        const stage = (typeof process.env.CAPBOX_DISTRIBUTION_STAGE === 'string' &&
+        process.env.CAPBOX_DISTRIBUTION_STAGE !== 'undefined'
+          ? process.env.CAPBOX_DISTRIBUTION_STAGE
+          : await prompt.askForDistributionStage(platform, capacitorConfig)
+        ).toLowerCase()
+        resolve(stage)
+      } catch (e) {
+        reject(e)
+      }
     })
 }
