@@ -21,7 +21,7 @@ const getFileName = filePath => {
 const optimizeCSS = async filePath => {
   log(`Optimizing CSS on ${getFileName(filePath)} file...`.yellow)
   await exec(`npx cleancss ${filePath} -o ${filePath} -02`, { silent: true })
-  if (process.env.CAPBOX_PLATFORM === 'pwa') {
+  if (process.env.CAPBOX_ZIP_ASSETS) {
     await gzip(filePath)
     await brotle(filePath)
   }

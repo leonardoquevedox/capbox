@@ -4,10 +4,12 @@
   "version": "0.1.5",
   "private": false,
   "scripts": {
+    "babel": "babel",
     "dev": "cross-env CAPBOX_STAGE=development node bin/capbox",
     "capbox": "cross-env CAPBOX_STAGE=development node bin/capbox"
   },
   "dependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/polyfill": "^7.4.4",

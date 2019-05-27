@@ -84,13 +84,13 @@ program
 
 /* ----- Optimize ------ */
 program
-  .command('optimize <platform>')
+  .command('optimize')
+  .option('--zip', 'Gzips and brotlis static files.')
   .description('Optimizes application statics for specified platform: "android", "ios" or "pwa".')
-  .action(platform => {
+  .action((platform, options) => {
+    process.env.CAPBOX_ZIP_ASSETS = true
     process.env.CAPBOX_PLATFORM = platform
-    sync().then(() => {
-      optimize()
-    })
+    optimize()
   })
 
 program.parse(process.argv)

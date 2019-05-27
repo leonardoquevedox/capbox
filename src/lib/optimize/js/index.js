@@ -22,7 +22,7 @@ const getFileName = filePath => {
 
 const gzip = async filePath => {
   log(`Gzipping ${getFileName(filePath)} file...`.yellow)
-  await exec(`npx ngzip ${filePath} > ${filePath}.gz`)
+  await exec(`npx ngzip ${filePath} > ${filePath}.gz`, { silent: true })
 }
 
 const brotle = async filePath => {
@@ -34,11 +34,12 @@ const brotle = async filePath => {
 const optimizeJS = async filePath => {
   log(`Optimizing ${getFileName(filePath)} file...`.yellow)
   await exec(
-    `npx babel-cli ${filePath} --out-file ${filePath} --presets=@babel/env --compact=true --quiet`
+    `npm run babel ${filePath} -- --out-file ${filePath} --presets=@babel/env --compact=true --quiet`,
+    { silent: true }
   )
   log(`Uglyfying ${getFileName(filePath)} file...`.yellow)
   await exec(`npx uglifyjs ${filePath} -o ${filePath} --compress --mangle`)
-  if (process.env.CAPBOX_PLATFORM === 'pwa') {
+  if (process.env.CAPBOX_ZIP_ASSETS) {
     await gzip(filePath)
     await brotle(filePath)
   }
