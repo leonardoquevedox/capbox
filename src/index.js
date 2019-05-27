@@ -26,7 +26,9 @@ program
     process.env.CAPBOX_PLATFORM = platform
     process.env.CAPBOX_BUILD_TYPE = options.release ? 'release' : 'debug'
     sync().then(() => {
-      run()
+      build().then(() => {
+        run()
+      })
     })
   })
 
