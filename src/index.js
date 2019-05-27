@@ -54,7 +54,7 @@ program
     optimize()
   })
 
-/* ----- Publish ------ */
+/* ----- Distribute ------ */
 program
   .command('distribute <platform>')
   .option('--stage', 'Performs an optimized and signed release build.')

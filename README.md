@@ -16,8 +16,8 @@ Capbox mission is to make developers life easier by bringing more automation to 
 Practial examples? For sure:  
 `$ capbox run android`  
 `$ capbox run ios`  
-`$ capbox run pwa`  
-`$ capbox run desktop`  
+`(Under development: $ capbox run pwa)`  
+`(Under development: $ capbox run desktop)`  
   
 ##### `$ capbox build <platform>`  
 > Run application on specified `<platform>`: `android`, `ios`, `pwa`, or `desktop`.  
@@ -25,8 +25,8 @@ Practial examples? For sure:
 Practial examples? For sure:  
 `$ capbox build android`  
 `$ capbox build ios`  
-`$ capbox build pwa`  
-`$ capbox build desktop`  
+`(Under development: $ capbox build pwa)`  
+`(Under development: $ capbox build desktop)`  
 Or, with the optional release flag:  
 `$ capbox build ios --release`  
 `$ capbox build android --release`  
@@ -44,19 +44,13 @@ Practial examples? For sure:
 Or, with the optional zip flag (Gzips and Brotli files):
 `$ capbox optimize --zip`  
   
-##### `$ capbox publish <platform>` 
-> Publishes application on the Microsoft App Center for the specified `<platform>`: `android` or `ios`. Practial examples? For sure:
-`$ capbox publish android`  
-`$ capbox publish ios`  
-   
-  
 #### Configuring the distribution:  
 * Create an account on [Microsoft App Center](https://appcenter.ms/apps)  
 * [Configure your application on the dashboard](https://docs.microsoft.com/en-us/appcenter/dashboard/)  
 * Pro tip: Create multiple stages for your application.  
 * Add the following settings to the root of your `capacitor.config.json file`:  
 ```
-  "publish": {
+  "distribute": {
     "appcenter": {
       "organization": "App Center Org",
       "ios": {
@@ -76,7 +70,7 @@ Or, with the optional zip flag (Gzips and Brotli files):
 ##### Configuring custom stages  
 * In case you need custom stages, just add them to the `capacitor.config.json`, like:  
 ```
-  "publish": {
+  "distribute": {
     "appcenter": {
       "organization": "App Center Org",
       "ios": {
