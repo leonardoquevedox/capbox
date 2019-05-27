@@ -19,7 +19,8 @@ program.version(packageJSON.version).option('-h, --help', 'Shows this help descr
 
 /* ----- Run ------ */
 program
-  .command('run <platform>')
+  .command('run')
+  .arguments('<platform>')
   .option('--release', 'Performs an optimized and signed release build.')
   .description('Build application for specified platform: "android", "ios" or "pwa".')
   .action((platform, options) => {
@@ -41,6 +42,17 @@ program
     sync().then(() => {
       build()
     })
+  })
+
+/* ----- Optimize ------ */
+program
+  .command('optimize')
+  .option('--zip', 'Gzips and brotlis static files.')
+  .description('Optimizes application statics for specified platform: "android", "ios" or "pwa".')
+  .action((platform, options) => {
+    process.env.CAPBOX_ZIP_ASSETS = true
+    process.env.CAPBOX_PLATFORM = platform
+    optimize()
   })
 
 /* ----- Publish ------ */
@@ -80,17 +92,6 @@ program
   .description('Generates icons & splashscreens for the configured platforms.')
   .action(() => {
     resources()
-  })
-
-/* ----- Optimize ------ */
-program
-  .command('optimize')
-  .option('--zip', 'Gzips and brotlis static files.')
-  .description('Optimizes application statics for specified platform: "android", "ios" or "pwa".')
-  .action((platform, options) => {
-    process.env.CAPBOX_ZIP_ASSETS = true
-    process.env.CAPBOX_PLATFORM = platform
-    optimize()
   })
 
 program.parse(process.argv)
