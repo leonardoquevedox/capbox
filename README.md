@@ -58,16 +58,16 @@ Or, with the optional zip flag (Gzips and Brotli files):
 ```
   "publish": {
     "appcenter": {
-      "organization": "App Center Org.",
+      "organization": "App Center Org",
       "ios": {
-        "development": "App Center Org./MyApp-iOS-Development",
-        "homolog": "App Center Org./MyApp-iOS-Homolog",
-        "production": "App Center Org./MyApp-iOS"
+        "development": "App Center Org/MyApp-iOS-Development",
+        "homolog": "App Center Org/MyApp-iOS-Homolog",
+        "production": "App Center Org/MyApp-iOS"
       },
       "android": {
-        "development": "App Center Org./MyApp-Android-Development",
-        "homolog": "App Center Org./MyApp-Android-Homolog",
-        "production": "App Center Org./MyApp-Android"
+        "development": "App Center Org/MyApp-Android-Development",
+        "homolog": "App Center Org/MyApp-Android-Homolog",
+        "production": "App Center Org/MyApp-Android"
       }
     }
   }
@@ -78,12 +78,12 @@ Or, with the optional zip flag (Gzips and Brotli files):
 ```
   "publish": {
     "appcenter": {
-      "organization": "App Center Org.",
+      "organization": "App Center Org",
       "ios": {
-        "QA": "App Center Org./MyApp-iOS-QA"
+        "QA": "App Center Org/MyApp-iOS-QA"
       },
       "android": {
-        "QA": "App Center Org./MyApp-Android-QA"
+        "QA": "App Center Org/MyApp-Android-QA"
       }
     }
   }
