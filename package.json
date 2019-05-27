@@ -1,8 +1,23 @@
 {
   "name": "capbox",
   "description": "The brand new toolbox for Capacitor.io tasks automation.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
+  "keywords": [
+    "plugins",
+    "capacitor",
+    "universal app",
+    "progressive web apps",
+    "electron",
+    "pwa",
+    "desktop",
+    "android",
+    "universal",
+    "ios",
+    "ionic",
+    "cli",
+    "tool"
+  ],
   "scripts": {
     "babel": "babel",
     "dev": "cross-env CAPBOX_STAGE=development node bin/capbox",
@@ -47,5 +62,20 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Leonardo Quevedo",
+    "email": "lpachecoquevedo@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/leopq/capbox/issues"
+  },
+  "homepage": "https://github.com/leopq/capbox",
+  "contributors": [
+    {
+      "name": "leopq",
+      "email": "lpachecoquevedo@gmail.com"
+    }
   ]
 }
