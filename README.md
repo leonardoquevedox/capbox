@@ -12,33 +12,30 @@ Capbox mission is to make developers life easier by bringing more automation to 
   
 ### Commands:  
 ##### `$ capbox run <platform>`  
-> Run application on specified `<platform>`: `android`, `ios`, `pwa`, or `desktop`.      
+Run application on specified `<platform>`: `android`, `ios`, `pwa`, or `desktop`.      
 Practial examples? For sure:  
 `$ capbox run android`  
 `$ capbox run ios`  
-`(Under development: $ capbox run pwa)`  
-`(Under development: $ capbox run desktop)`  
+
   
 ##### `$ capbox build <platform>`  
-> Run application on specified `<platform>`: `android`, `ios`, `pwa`, or `desktop`.  
+Run application on specified `<platform>`: `android`, `ios`, `pwa`, or `desktop`.  
  `--release`: Performs an optimized and signed release build.    
 Practial examples? For sure:  
 `$ capbox build android`  
 `$ capbox build ios`  
-`(Under development: $ capbox build pwa)`  
-`(Under development: $ capbox build desktop)`  
 Or, with the optional release flag:  
 `$ capbox build ios --release`  
 `$ capbox build android --release`  
 
 ##### `$ capbox distribute <platform>`  
-> Distributes native installers for internal testers on the [Microsoft App Center](https://appcenter.ms/apps) for one the specified `<platform>`: `android` or `ios`.  
+Distributes native installers for internal testers on the [Microsoft App Center](https://appcenter.ms/apps) for one the specified `<platform>`: `android` or `ios`.  
 Examples:  
 `$ capbox distribute android --stage=development`  
 `$ capbox distribute ios --stage=production`  
   
 ##### `$ capbox optimize`  
-> Uses tools like Babel and UglifyJS in order to optimize application static files for improved loading times.    
+Uses tools like Babel and UglifyJS in order to optimize application static files for improved loading times.    
 Practial examples? For sure:
 `$ capbox optimize`  
 Or, with the optional zip flag (Gzips and Brotli files):
