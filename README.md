@@ -27,7 +27,7 @@ Practial examples? For sure:
 `$ capbox build ios`  
 `$ capbox build pwa`  
 `$ capbox build desktop`  
-Or, with the optional release flag:
+Or, with the optional release flag:  
 `$ capbox build ios --release`  
 `$ capbox build android --release`  
 
