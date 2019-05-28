@@ -1116,10 +1116,10 @@ caniuse-lite@^1.0.30000967:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000971.tgz#d1000e4546486a6977756547352bc96a4cfd2b13"
   integrity sha512-TQFYFhRS0O5rdsmSbF1Wn+16latXYsQJat66f7S7lizXW1PVpWJeZw9wqqVLIjuxDRz7s7xRUj13QCfd8hKn6g==
 
-capacitor-resources@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/capacitor-resources/-/capacitor-resources-1.0.8.tgz#d7b0b26ad464f3fa8e42d00ce8a73a6108830df3"
-  integrity sha512-gG7+7sgIkMStrmug6EPpeS+IvG45w6vOlIhEHBvLxsxjviss5Hnq46tdkwqFDNT9F1T/mcD71rIj2AJi2V27Bg==
+capacitor-resources@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/capacitor-resources/-/capacitor-resources-1.1.1.tgz#4a1fd1e1b60fbf369abdfa2b736529e2887c8d5f"
+  integrity sha512-Jdu5uGdqdpNlWzOzOQe2eM+rhH0xd7lxM4VKByi/jJnJB7JN/WYq7xfi1jnvB5onf/6LfqD/7twrI9vXkcAbsg==
   dependencies:
     "@babel/core" "^7.4.5"
     "@babel/plugin-proposal-object-rest-spread" "^7.4.4"
@@ -1129,6 +1129,7 @@ capacitor-resources@^1.0.8:
     bluebird "^3.5.1"
     colors "^1.1.2"
     commander "^2.12.2"
+    cross-env "^5.2.0"
     fs-extra "^4.0.2"
     gauge "^2.7.4"
     jimp "^0.2.28"
