@@ -10,16 +10,16 @@ require('colors')
 const shell = require('shelljs')
 const path = require('path')
 const klawSync = require('klaw-sync')
+const log = require('../../../utils/log')
 
 const { exec } = shell
-const { log } = console
 
 const getFileName = filePath => {
   return path.basename(filePath)
 }
 
 const optimizeCSS = async filePath => {
-  log(`Optimizing CSS on ${getFileName(filePath)} file...`.yellow)
+  log.info(`Optimizing CSS on ${getFileName(filePath)} file...`.yellow)
   await exec(`npx cleancss ${filePath} -o ${filePath} -02`, { silent: true })
   if (process.env.CAPBOX_ZIP_ASSETS) {
     await gzip(filePath)

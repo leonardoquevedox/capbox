@@ -14,30 +14,30 @@ const brotli = require('brotli')
 const klawSync = require('klaw-sync')
 
 const { exec } = shell
-const { log } = console
+const log = require('../../../utils/log')
 
 const getFileName = filePath => {
   return path.basename(filePath)
 }
 
 const gzip = async filePath => {
-  log(`Gzipping ${getFileName(filePath)} file...`.yellow)
+  log.info(`Gzipping ${getFileName(filePath)} file...`.yellow)
   await exec(`npx ngzip ${filePath} > ${filePath}.gz`, { silent: true })
 }
 
 const brotle = async filePath => {
-  log(`Brotling ${getFileName(filePath)} file...`.yellow)
+  log.info(`Brotling ${getFileName(filePath)} file...`.yellow)
   let brotled = brotli.compress(fs.readFileSync(filePath))
   await fs.writeFileSync(`${filePath}.br`, brotled, { encode: 'UTF-8' })
 }
 
 const optimizeJS = async filePath => {
-  log(`Optimizing ${getFileName(filePath)} file...`.yellow)
+  log.info(`Optimizing ${getFileName(filePath)} file...`.yellow)
   await exec(
     `npm run babel ${filePath} -- --out-file ${filePath} --presets=@babel/env --compact=true --quiet`,
     { silent: true }
   )
-  log(`Uglyfying ${getFileName(filePath)} file...`.yellow)
+  log.info(`Uglyfying ${getFileName(filePath)} file...`.yellow)
   await exec(`npx uglifyjs ${filePath} -o ${filePath} --compress --mangle`)
   if (process.env.CAPBOX_ZIP_ASSETS) {
     await gzip(filePath)

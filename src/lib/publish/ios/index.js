@@ -2,6 +2,7 @@ require('colors')
 
 const shell = require('shelljs')
 const path = require('path')
+const log = require('../../../utils/log')
 
 const { exec } = shell
 
@@ -14,7 +15,7 @@ module.exports = new Promise(async (resolve, reject) => {
     const appName = capacitorConfig.publish.appcenter.ios[stage]
     const iosPath = path.join(rootPath, 'ios')
     const appExecutable = path.join(iosPath, 'app.ipa')
-    console.log(`Uploading app build...`.yellow)
+    log.header(`Uploading app build...`.yellow)
     await exec(
       `npx appcenter-cli distribute release --app ${appName} -f ${appExecutable} -g Collaborators`,
       { cwd: iosPath }

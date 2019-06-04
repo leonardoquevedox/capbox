@@ -2,8 +2,8 @@ require('colors')
 
 const shell = require('shelljs')
 const path = require('path')
+const log = require('../../../utils/log')
 
-const { log } = console
 const { exec } = shell
 
 module.exports = new Promise(async (resolve, reject) => {
@@ -13,7 +13,7 @@ module.exports = new Promise(async (resolve, reject) => {
     /* eslint-disable-next-line */
     const capacitorConfig = require(path.join(rootPath, 'capacitor.config.json'))
     const { appName, appId } = capacitorConfig
-    log('Generating iOS build...'.yellow)
+    log.header('Generating iOS build...'.yellow)
     await exec(
       `xcodebuild -project ${appName}.xcodeproj -scheme ${appName} -sdk iphonesimulator10.3 clean analyze`,
       { cwd: iosPath }
@@ -30,7 +30,7 @@ module.exports = new Promise(async (resolve, reject) => {
     )
     // await exec(`xcrun simctl install booted ${appId}`, { cwd: iosPath })
     // await exec(`xcrun simctl launch booted ${appId}`, { cwd: iosPath })
-    log('iOS built successfully!'.green.bold)
+    log.success('iOS built successfully!'.green.bold)
     resolve()
   } catch (e) {
     reject(e)

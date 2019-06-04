@@ -5,8 +5,9 @@ const path = require('path')
 const fs = require('fs-extra')
 const shell = require('shelljs')
 
+const log = require('../../../utils/log')
+
 const { exec } = shell
-const { log } = console
 
 module.exports = new Promise(async (resolve, reject) => {
   try {
@@ -15,7 +16,6 @@ module.exports = new Promise(async (resolve, reject) => {
     /* eslint-disable-next-line */
     const capacitorConfigContent = require(capacitorConfigFile)
     const isLivereload = process.env.CAPBOX_LIVERELOAD
-    log(`Generating capacitor config....`.yellow)
     if (isLivereload) {
       const LIVERELOAD_IP = ip.address()
       const LIVERELOAD_PORT = process.env.PORT
@@ -23,9 +23,9 @@ module.exports = new Promise(async (resolve, reject) => {
       capacitorConfigContent.server = { url: LIVERELOAD_SERVER }
     }
     fs.writeFileSync(capacitorConfigFile, JSON.stringify(capacitorConfigContent, null, 2))
-    log(`Generating capacitor config....`.yellow)
+    log.header(`Generating capacitor config....`.yellow)
     await exec('npx cap sync', { cwd: rootPath })
-    log('Capacitor build updated successfully!'.green)
+    log.success('Capacitor build updated successfully!'.green)
     resolve()
   } catch (e) {
     reject(e)

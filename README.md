@@ -51,9 +51,9 @@ Or, with the optional zip flag (Gzips and Brotli files):
     "appcenter": {
       "organization": "App Center Org",
       "ios": {
-        "development": "App Center Org/MyApp-iOS-Development",
-        "homolog": "App Center Org/MyApp-iOS-Homolog",
-        "production": "App Center Org/MyApp-iOS"
+        "development": "App Center Org/MyApp-Development",
+        "homolog": "App Center Org/MyApp-Homolog",
+        "production": "App Center Org/MyApp"
       },
       "android": {
         "development": "App Center Org/MyApp-Android-Development",
@@ -71,7 +71,7 @@ Or, with the optional zip flag (Gzips and Brotli files):
     "appcenter": {
       "organization": "App Center Org",
       "ios": {
-        "QA": "App Center Org/MyApp-iOS-QA"
+        "QA": "App Center Org/MyApp-QA"
       },
       "android": {
         "QA": "App Center Org/MyApp-Android-QA"

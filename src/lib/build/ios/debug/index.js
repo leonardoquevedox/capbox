@@ -2,8 +2,8 @@ require('colors')
 
 const shell = require('shelljs')
 const path = require('path')
+const log = require('../../../../utils/log')
 
-const { log } = console
 const { exec } = shell
 
 module.exports = new Promise(async (resolve, reject)=>{
@@ -13,9 +13,9 @@ module.exports = new Promise(async (resolve, reject)=>{
     /* eslint-disable-next-line */
     const capacitorConfig = require(path.join(rootPath, 'capacitor.config.json'))
     const { appName } = capacitorConfig
-    log('Generating iOS build...'.yellow)
+    log.header('Generating iOS build...'.yellow)
     await exec(`xcodebuild build-for-testing -workspace ${appName}.xcworkspace -scheme ${appName} -destination generic/platform=iOS`, { cwd: iosPath })
-    log('iOS built successfully!'.green.bold)
+    log.success('iOS built successfully!'.green.bold)
     resolve()
   } catch(e){
     reject(e)
