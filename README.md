@@ -28,60 +28,16 @@ Or, with the optional release flag:
 `$ capbox build ios --release`  
 `$ capbox build android --release`  
 
-##### `$ capbox distribute <platform>`  
-Distributes native installers for internal testers on the [Microsoft App Center](https://appcenter.ms/apps) for one the specified `<platform>`: `android` or `ios`.  
-Examples:  
-`$ capbox distribute android --stage=development`  
-`$ capbox distribute ios --stage=production`  
-  
 ##### `$ capbox optimize`  
 Uses tools like Babel and UglifyJS in order to optimize application static files for improved loading times.    
 Practial examples? For sure:
 `$ capbox optimize`  
 Or, with the optional zip flag (Gzips and Brotli files):
 `$ capbox optimize --zip`  
-  
-#### Configuring the distribution:  
-* Create an account on [Microsoft App Center](https://appcenter.ms/apps)  
-* [Configure your application on the dashboard](https://docs.microsoft.com/en-us/appcenter/dashboard/)  
-* Pro tip: Create multiple stages for your application.  
-* Add the following settings to the root of your `capacitor.config.json file`:  
-```
-  "distribute": {
-    "appcenter": {
-      "organization": "App Center Org",
-      "ios": {
-        "development": "App Center Org/MyApp-Development",
-        "homolog": "App Center Org/MyApp-Homolog",
-        "production": "App Center Org/MyApp"
-      },
-      "android": {
-        "development": "App Center Org/MyApp-Android-Development",
-        "homolog": "App Center Org/MyApp-Android-Homolog",
-        "production": "App Center Org/MyApp-Android"
-      }
-    }
-  }
-```  
-  
-##### Configuring custom stages  
-* In case you need custom stages, just add them to the `capacitor.config.json`, like:  
-```
-  "distribute": {
-    "appcenter": {
-      "organization": "App Center Org",
-      "ios": {
-        "QA": "App Center Org/MyApp-QA"
-      },
-      "android": {
-        "QA": "App Center Org/MyApp-Android-QA"
-      }
-    }
-  }
-```  
-* Then use them as the stage parameter:  
-`$ capbox distribute android --stage=QA`  
-  
+
+## Roadmap
+- Add PWA platform.
+- Add Desktop platform.
   
 #### And that's all there is about it.  
 - Any doubts? Fell free to open an issue.  

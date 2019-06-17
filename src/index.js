@@ -56,23 +56,6 @@ program
     optimize()
   })
 
-/* ----- Distribute ------ */
-program
-  .command('distribute')
-  .arguments('<platform>')
-  .option('--stage <value>', 'Performs an optimized and signed release build.')
-  .description('Run application on specified platform: "android", "ios" or "pwa".')
-  .action((platform, options) => {
-    process.env.CAPBOX_PLATFORM = platform
-    process.env.CAPBOX_DISTRIBUTION_STAGE = options.stage
-    process.env.CAPBOX_BUILD_TYPE = 'release'
-    sync().then(() => {
-      build().then(() => {
-        distribute()
-      })
-    })
-  })
-
 /* ----- Resources ------ */
 program
   .command('resources')
@@ -82,18 +65,3 @@ program
   })
 
 program.parse(process.argv)
-
-/* ----- Publish ------ */
-/* program
-  .command('publish <platform>')
-  .description('Run application on specified platform: "android", "ios" or "pwa".')
-  .action((platform, options) => {
-    process.env.CAPBOX_PLATFORM = platform
-    process.env.CAPBOX_BUILD_TYPE = 'release'
-    process.env.CAPBOX_PUBLISH_STAGE = options.stage
-    sync().then(() => {
-      build().then(() => {
-        publish()
-      })
-    })
-  }) */
