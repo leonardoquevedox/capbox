@@ -4,8 +4,6 @@ const packageJSON = require('../package.json')
 
 /* Scripts */
 const build = require('./lib/build')
-const distribute = require('./lib/distribute')
-const publish = require('./lib/publish')
 const resources = require('./lib/resources')
 const run = require('./lib/run')
 const optimize = require('./lib/optimize')
