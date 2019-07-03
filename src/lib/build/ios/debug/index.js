@@ -9,12 +9,9 @@ const { exec } = shell
 module.exports = new Promise(async (resolve, reject)=>{
   try{
     const rootPath = process.env.CAPACITOR_PROJECT_ROOT
-    const iosPath = path.join(rootPath, 'ios')
-    /* eslint-disable-next-line */
-    const capacitorConfig = require(path.join(rootPath, 'capacitor.config.json'))
-    const { appName } = capacitorConfig
+    const iosPath = path.join(rootPath, 'ios', 'App')
     log.header('Generating iOS build...'.yellow)
-    await exec(`xcodebuild build-for-testing -workspace ${appName}.xcworkspace -scheme ${appName} -destination generic/platform=iOS`, { cwd: iosPath })
+    await exec(`xcodebuild build-for-testing -workspace App.xcworkspace -scheme App -destination generic/platform=iOS`, { cwd: iosPath })
     log.success('iOS built successfully!'.green.bold)
     resolve()
   } catch(e){
