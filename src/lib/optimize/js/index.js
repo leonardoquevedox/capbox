@@ -7,18 +7,16 @@
  */
 
 require('colors')
-const shell = require('shelljs')
-const fs = require('fs-extra')
-const path = require('path')
-const brotli = require('brotli')
-const klawSync = require('klaw-sync')
+import shell from 'shelljs';
+import fs from 'fs-extra';
+import path from 'path';
+import brotli from 'brotli';
+import klawSync from 'klaw-sync';
 
 const { exec } = shell
-const log = require('../../../utils/log')
+import log from '../../../utils/log';
 
-const getFileName = filePath => {
-  return path.basename(filePath)
-}
+const getFileName = filePath => path.basename(filePath)
 
 const gzip = async filePath => {
   log.info(`Gzipping ${getFileName(filePath)} file...`.yellow)
@@ -59,7 +57,7 @@ const optimizeJSFilesFor = async (buildDir, options) => {
   return Promise.all(files.map(file => optimizeJS(file)))
 }
 
-module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
+export default ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   try {
     const capacitorConfig = require(path.join(rootPath, 'capacitor.config.json'))
     const buildDir = path.join(rootPath, capacitorConfig.webDir)
@@ -69,4 +67,4 @@ module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   } catch (e) {
     reject(e)
   }
-})
+});

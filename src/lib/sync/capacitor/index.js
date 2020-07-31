@@ -1,15 +1,14 @@
 require('colors')
 
-const ip = require('ip')
-const path = require('path')
-const fs = require('fs-extra')
-const shell = require('shelljs')
-
-const log = require('../../../utils/log')
+import ip from 'ip';
+import path from 'path';
+import fs from 'fs-extra';
+import shell from 'shelljs';
+import log from '../../../utils/log';
 
 const { exec } = shell
 
-module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
+export default ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   try {
     const capacitorConfigFile = path.join(rootPath, 'capacitor.config.json')
     /* eslint-disable-next-line */
@@ -29,4 +28,4 @@ module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   } catch (e) {
     reject(e)
   }
-})
+});

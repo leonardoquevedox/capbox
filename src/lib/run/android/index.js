@@ -1,12 +1,12 @@
 require('colors')
 
-const shell = require('shelljs')
-const path = require('path')
-const log = require('../../../utils/log')
+import shell from 'shelljs';
+import path from 'path';
+import log from '../../../utils/log';
 
 const { exec } = shell
 
-module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
+export default ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   try {
     const androidPath = path.join(rootPath, 'android')
     const apkPath = path.join(
@@ -27,4 +27,4 @@ module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   } catch (e) {
     reject(e)
   }
-})
+});

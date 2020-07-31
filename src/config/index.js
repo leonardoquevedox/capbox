@@ -1,6 +1,6 @@
-const prompt = require('../utils/prompt')
+import prompt from '../utils/prompt';
 
-module.exports = {
+export default {
   getPlatform: () =>
     new Promise(async (resolve, reject) => {
       try {
@@ -36,4 +36,4 @@ module.exports = {
         reject(e)
       }
     })
-}
+};

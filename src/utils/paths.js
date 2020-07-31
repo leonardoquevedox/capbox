@@ -1,9 +1,9 @@
-const path = require('path')
+import path from 'path';
 
-module.exports = {
+export default {
   getRootPath: () => {
     const developmentRoot = path.resolve(__dirname, '../../test')
     const productionRoot = path.resolve(__dirname, '../../../../')
     return process.env.CAPBOX_STAGE === 'development' ? developmentRoot : productionRoot
   }
-}
+};

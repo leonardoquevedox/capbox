@@ -1,13 +1,14 @@
 #!/usr/bin/env node
-const program = require('commander')
-const packageJSON = require('../package.json')
+import program from 'commander';
+import packageJSON from '../package.json';
 
 /* Scripts */
-const build = require('./lib/build')
-const resources = require('./lib/resources')
-const run = require('./lib/run')
-const optimize = require('./lib/optimize')
-const sync = require('./lib/sync')
+import build from './lib/build';
+
+import resources from './lib/resources';
+import run from './lib/run';
+import optimize from './lib/optimize';
+import sync from './lib/sync';
 
 /* CLI startup */
 process.env.CAPBOX_STAGE = process.env.CAPBOX_STAGE || 'production'

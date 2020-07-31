@@ -1,12 +1,12 @@
 require('colors')
 
-const path = require('path')
-const { exec } = require('shelljs')
-const config = require('../../config')
-const paths = require('../../utils/paths')
-const log = require('../../utils/log')
+import path from 'path';
+import {exec} from 'shelljs';
+import config from '../../config';
+import paths from '../../utils/paths';
+import log from '../../utils/log';
 
-module.exports = () => new Promise(async (resolve, reject) => {
+export default () => new Promise(async (resolve, reject) => {
   try {
     const platform = await config.getPlatform()
     const script = path.join(__dirname, platform)
@@ -19,4 +19,4 @@ module.exports = () => new Promise(async (resolve, reject) => {
   } catch (e) {
     reject(e)
   }
-})
+});

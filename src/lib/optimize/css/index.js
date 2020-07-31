@@ -7,16 +7,14 @@
  */
 
 require('colors')
-const shell = require('shelljs')
-const path = require('path')
-const klawSync = require('klaw-sync')
-const log = require('../../../utils/log')
+import shell from 'shelljs';
+import path from 'path';
+import klawSync from 'klaw-sync';
+import log from '../../../utils/log';
 
 const { exec } = shell
 
-const getFileName = filePath => {
-  return path.basename(filePath)
-}
+const getFileName = filePath => path.basename(filePath)
 
 const optimizeCSS = async filePath => {
   log.info(`Optimizing CSS on ${getFileName(filePath)} file...`.yellow)
@@ -41,7 +39,7 @@ const optimizeCSSFor = async buildDir => {
   return Promise.all(files.map(file => optimizeCSS(file)))
 }
 
-module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
+export default ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   try {
     const capacitorConfig = require(path.join(rootPath, 'capacitor.config.json'))
     const buildDir = path.join(rootPath, capacitorConfig.webDir)
@@ -50,4 +48,4 @@ module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   } catch (e) {
     reject(e)
   }
-})
+});

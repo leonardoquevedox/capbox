@@ -1,9 +1,9 @@
 require('colors')
 
-const { exec } = require('shelljs')
-const paths = require('../../utils/paths')
+import {exec} from 'shelljs';
+import paths from '../../utils/paths';
 
-module.exports = () =>
+export default () =>
   new Promise(async (resolve, reject) => {
     try {
       await exec('npx capacitor-resources', { cwd: paths.getRootPath() })
@@ -11,4 +11,4 @@ module.exports = () =>
     } catch (e) {
       reject(e)
     }
-  })
+  });

@@ -1,11 +1,11 @@
 require('colors')
 
-const path = require('path')
-const { exec } = require('shelljs')
-const paths = require('../../utils/paths')
-const log = require('../../utils/log')
+import path from 'path';
+import {exec} from 'shelljs';
+import paths from '../../utils/paths';
+import log from '../../utils/log';
 
-module.exports = () =>
+export default () =>
   new Promise(async (resolve, reject) => {
     try {
       const optimizeJS = path.join(__dirname, 'js')
@@ -18,4 +18,4 @@ module.exports = () =>
     } catch (e) {
       reject(e)
     }
-  })
+  });

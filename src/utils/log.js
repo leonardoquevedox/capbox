@@ -1,7 +1,8 @@
 require('colors')
 
 const { log } = console
-module.exports = {
+
+export default {
   info: str => {
     log(str)
   },
@@ -15,4 +16,4 @@ module.exports = {
     log('')
     log(str.yellow)
   }
-}
+};

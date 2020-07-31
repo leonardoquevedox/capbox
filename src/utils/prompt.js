@@ -1,8 +1,8 @@
-const inquirer = require('inquirer')
-const platforms = require('../config/platforms')
-const buildTypes = require('../config/buildTypes')
+import inquirer from 'inquirer';
+import platforms from '../config/platforms';
+import buildTypes from '../config/buildTypes';
 
-module.exports = {
+export default {
   askForPlatform: () =>
     new Promise((resolve, reject) => {
       inquirer
@@ -67,4 +67,4 @@ module.exports = {
           reject(e)
         })
     })
-}
+};

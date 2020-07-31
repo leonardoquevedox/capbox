@@ -1,10 +1,10 @@
 require('colors')
 
-const path = require('path')
-const paths = require('../../utils/paths')
-const log = require('../../utils/log')
+import path from 'path';
+import paths from '../../utils/paths';
+import log from '../../utils/log';
 
-module.exports = () => new Promise(async (resolve, reject) => {
+export default () => new Promise(async (resolve, reject) => {
   try {
     const script = path.join(__dirname, 'capacitor')
     const rootPath = paths.getRootPath()
@@ -16,4 +16,4 @@ module.exports = () => new Promise(async (resolve, reject) => {
   } catch (e) {
     reject(e)
   }
-})
+});
