@@ -23,7 +23,7 @@ export default ({ rootPath } = {}) =>
       }
       fs.writeFileSync(capacitorConfigFile, JSON.stringify(capacitorConfigContent, null, 2))
       log.header(`Generating capacitor config....`.yellow)
-      await exec('npx cap sync', { cwd: rootPath })
+      await exec('npx @capacitor/cli sync', { cwd: rootPath })
       log.success('Capacitor build updated successfully!'.green)
       resolve()
     } catch (e) {
