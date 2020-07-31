@@ -57,7 +57,7 @@ var _default = function _default() {
               _log.default.header("Generating capacitor config....".yellow);
 
               _context.next = 9;
-              return exec('npx cap sync', {
+              return exec('npx @capacitor/cli sync', {
                 cwd: rootPath
               });
 
