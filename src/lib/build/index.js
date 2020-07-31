@@ -12,6 +12,8 @@ module.exports = () => new Promise(async (resolve, reject) => {
     const buildType = await config.getBuildType()
     const script = path.join(__dirname, platform, buildType)
     log.header(`Preparing ${platform} build...`.yellow)
+    log.header(`Got build folder: ${paths.getRootPath()}`)
+    log.header(`Running script ${script}`)
     await exec(`npx cross-env CAPACITOR_PROJECT_ROOT=${paths.getRootPath()} node ${script}`)
     resolve()
   } catch (e) {
