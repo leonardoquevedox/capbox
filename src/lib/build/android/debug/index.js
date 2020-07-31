@@ -6,19 +6,18 @@ const log = require('../../../../utils/log')
 
 const { exec } = shell
 
-module.exports = new Promise(async (resolve, reject)=>{
-  try{
-    const rootPath = process.env.CAPACITOR_PROJECT_ROOT
+module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
+  try {
     const androidPath = path.join(rootPath, 'android')
     const isWin = process.platform === "win32"
     log.header(`Generating android build...`.yellow)
 
-    if(isWin) await exec('gradlew assembleDebug', { cwd: androidPath })
+    if (isWin) await exec('gradlew assembleDebug', { cwd: androidPath })
     else await exec('./gradlew assembleDebug', { cwd: androidPath })
 
     log.success(`Android built successfully!`.green.bold)
     resolve()
-  } catch(e){
+  } catch (e) {
     reject(e)
   }
 })

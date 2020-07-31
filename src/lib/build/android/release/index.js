@@ -6,9 +6,8 @@ const log = require('../../../../utils/log')
 
 const { exec } = shell
 
-module.exports = new Promise(async (resolve, reject) => {
+module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   try {
-    const rootPath = process.env.CAPACITOR_PROJECT_ROOT
     const androidPath = path.join(rootPath, 'android')
     const isWin = process.platform === "win32"
     log.header(`Generating android build...`.yellow)
