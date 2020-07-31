@@ -1,10 +1,10 @@
 {
   "name": "capbox",
   "description": "The brand new toolbox for Capacitor.io tasks automation.",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "private": false,
   "bin": {
-    "capbox": "./dist/index"
+    "capbox": "./bin/capbox"
   },
   "keywords": [
     "plugins",
