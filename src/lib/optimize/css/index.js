@@ -41,9 +41,8 @@ const optimizeCSSFor = async buildDir => {
   return Promise.all(files.map(file => optimizeCSS(file)))
 }
 
-module.exports = new Promise(async (resolve, reject) => {
+module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   try {
-    const rootPath = process.env.CAPACITOR_PROJECT_ROOT
     const capacitorConfig = require(path.join(rootPath, 'capacitor.config.json'))
     const buildDir = path.join(rootPath, capacitorConfig.webDir)
     await optimizeCSSFor(buildDir)

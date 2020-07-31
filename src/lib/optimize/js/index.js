@@ -59,9 +59,8 @@ const optimizeJSFilesFor = async (buildDir, options) => {
   return Promise.all(files.map(file => optimizeJS(file)))
 }
 
-module.exports = new Promise(async (resolve, reject) => {
+module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   try {
-    const rootPath = process.env.CAPACITOR_PROJECT_ROOT
     const capacitorConfig = require(path.join(rootPath, 'capacitor.config.json'))
     const buildDir = path.join(rootPath, capacitorConfig.webDir)
     const blacklist = ['polyfills.js', 'sw-toolbox.js']

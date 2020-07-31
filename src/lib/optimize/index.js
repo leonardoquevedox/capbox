@@ -9,11 +9,11 @@ module.exports = () =>
   new Promise(async (resolve, reject) => {
     try {
       const optimizeJS = path.join(__dirname, 'js')
-      // const optimizeCSS = path.join(__dirname, 'css')
-      const CAPBOX_ENVIRONMENT = `npx cross-env CAPACITOR_PROJECT_ROOT=${paths.getRootPath()}`
+      const optimizeCSS = path.join(__dirname, 'css')
+      const rootPath = paths.getRootPath()
       log.header(`Optimizing application static files...`.yellow)
-      await exec(`${CAPBOX_ENVIRONMENT} node ${optimizeJS}`)
-      // await exec(`${CAPBOX_ENVIRONMENT} node ${optimizeCSS}`)
+      await require(optimizeJS)({ rootPath })
+      await require(optimizeCSS)({ rootPath })
       resolve()
     } catch (e) {
       reject(e)

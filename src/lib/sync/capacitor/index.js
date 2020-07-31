@@ -9,9 +9,8 @@ const log = require('../../../utils/log')
 
 const { exec } = shell
 
-module.exports = new Promise(async (resolve, reject) => {
+module.exports = ({ rootPath } = {}) => new Promise(async (resolve, reject) => {
   try {
-    const rootPath = process.env.CAPACITOR_PROJECT_ROOT
     const capacitorConfigFile = path.join(rootPath, 'capacitor.config.json')
     /* eslint-disable-next-line */
     const capacitorConfigContent = require(capacitorConfigFile)
