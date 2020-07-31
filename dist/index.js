@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+require("@babel/polyfill");
+
 var _commander = _interopRequireDefault(require("commander"));
 
 var _package = _interopRequireDefault(require("../package.json"));
@@ -14,8 +18,6 @@ var _run = _interopRequireDefault(require("./lib/run"));
 var _optimize = _interopRequireDefault(require("./lib/optimize"));
 
 var _sync = _interopRequireDefault(require("./lib/sync"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* Scripts */
 

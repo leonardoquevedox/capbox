@@ -1,14 +1,15 @@
 #!/usr/bin/env node
-import program from 'commander';
-import packageJSON from '../package.json';
+import '@babel/polyfill'
+import program from 'commander'
+import packageJSON from '../package.json'
 
 /* Scripts */
-import build from './lib/build';
+import build from './lib/build'
 
-import resources from './lib/resources';
-import run from './lib/run';
-import optimize from './lib/optimize';
-import sync from './lib/sync';
+import resources from './lib/resources'
+import run from './lib/run'
+import optimize from './lib/optimize'
+import sync from './lib/sync'
 
 /* CLI startup */
 process.env.CAPBOX_STAGE = process.env.CAPBOX_STAGE || 'production'

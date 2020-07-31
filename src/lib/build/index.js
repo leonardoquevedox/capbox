@@ -15,7 +15,8 @@ export default () => new Promise(async (resolve, reject) => {
     log.header(`Preparing ${platform} build...`.yellow)
     log.header(`Got build folder: ${rootPath}`)
     log.header(`Running script ${script}`)
-    await require(script)({ rootPath })
+    const runScript = require(script).default
+    await runScript({ rootPath })
     resolve()
   } catch (e) {
     reject(e)

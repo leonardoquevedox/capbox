@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -10,8 +12,6 @@ var _inquirer = _interopRequireDefault(require("inquirer"));
 var _platforms = _interopRequireDefault(require("../config/platforms"));
 
 var _buildTypes = _interopRequireDefault(require("../config/buildTypes"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = {
   askForPlatform: function askForPlatform() {
