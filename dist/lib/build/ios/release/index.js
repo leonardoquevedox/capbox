@@ -27,29 +27,45 @@ var _default = function _default() {
 
   return new Promise( /*#__PURE__*/function () {
     var _ref2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(resolve, reject) {
+      var iosPath;
       return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              try {
-                /*  const rootPath = process.env.CAPACITOR_PROJECT_ROOT
-                 const iosPath = path.join(rootPath, 'ios', 'App')
-                 log.header('Generating iOS release build...'.yellow)
-                 await exec(`xcodebuild -workspace App.xcworkspace -scheme App -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/App.xcarchive`, { cwd: iosPath })
-                 await exec(`xcodebuild -exportArchive -archivePath $PWD/build/App.xcarchive -exportPath $PWD/build -exportOptionsPlist $PWD/App/App/exportOptions.plist`, { cwd: iosPath }) */
-                _log.default.success('iOS built successfully!'.green.bold);
+              _context.prev = 0;
+              iosPath = _path.default.join(rootPath, 'ios', 'App');
 
-                resolve();
-              } catch (e) {
-                reject(e);
-              }
+              _log.default.header('Generating iOS release build...'.yellow);
 
-            case 1:
+              _context.next = 5;
+              return exec("xcodebuild -workspace App.xcworkspace -scheme App -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/App.xcarchive", {
+                cwd: iosPath
+              });
+
+            case 5:
+              _context.next = 7;
+              return exec("xcodebuild -exportArchive -archivePath $PWD/build/App.xcarchive -exportPath $PWD/build -exportOptionsPlist $PWD/App/App/exportOptions.plist", {
+                cwd: iosPath
+              });
+
+            case 7:
+              _log.default.success('iOS built successfully!'.green.bold);
+
+              resolve();
+              _context.next = 14;
+              break;
+
+            case 11:
+              _context.prev = 11;
+              _context.t0 = _context["catch"](0);
+              reject(_context.t0);
+
+            case 14:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[0, 11]]);
     }));
 
     return function (_x, _x2) {
